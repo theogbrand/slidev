@@ -252,3 +252,39 @@ graph LR
 - Enables **test-time scaling** without additional training
 - Results in more **reliable and interpretable** multimodal reasoning
 - **RL training loop** uses PRM rewards to continuously improve policy model
+
+---
+layout: default
+class: text-small
+---
+
+# Agentic Verification Example
+
+```
+<reasoning_trace>
+I'll analyze specific parts of this image to identify the location.
+[Crop: Street sign visible in upper right]
+</reasoning_trace>
+
+<verify>
+I need to verify if this reasoning trace is valid. I'll use image analysis and web search tools to check the claims.
+
+<image_analysis_tool>
+Analyzing the cropped regions:
+- Confirmed: Green street sign shows "8th Ave"
+- Confirmed: Building has distinctive vertical panels
+</image_analysis_tool>
+
+<web_search_tool>
+Search: "8th Avenue West 58th Street Manhattan building with vertical panels"
+Results: Found images of this intersection matching the building description. The northwest corner has a modern building with vertical panels.
+</web_search_tool>
+
+<reasoning_verification>
+The agent correctly identified the street sign and architectural features. The claim about "220 West 58th" is partially accurate - there is a building at that intersection, though the exact address should be verified. The final conclusion about the intersection location is supported by the evidence.
+</reasoning_verification>
+
+<final_judgement>
+Judgment: Yes, the reasoning trace is valid. The agent properly used visual evidence to identify key features and correctly determined the location as the intersection of 8th Avenue and West 58th Street in Midtown Manhattan.
+</final_judgement>
+</verify>
