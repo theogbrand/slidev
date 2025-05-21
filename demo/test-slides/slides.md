@@ -32,7 +32,7 @@ headersFrontmatter:
 
 # Multimodal Reasoning & RL
 
-### "Age of Experience", Test-time Scaling, Self-Improving Agents with RL, PRMs
+### "Age of Experience", Test-time Scaling, Self-Improving Agents, PRMs
 
 <div class="abs-br m-6 text-xl">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
@@ -63,8 +63,8 @@ layout: default
     - Generating experiences
 4.  **Core Mechanism 2: Generating Rewards for Reasoning Trace**
     - Verifying reasoning traces using specialized agents with tools
-5.  **RLHF with PRM**
-    - Using the newly trained PRM to guide model inference
+5.  **RL Policy Model, Inference with PRM**
+    - Use the newly trained PRM to improve model inference at test time
 
 ---
 layout: default
