@@ -317,7 +317,7 @@ graph LR
     style RL fill:none,stroke:#f55,stroke-width:2px,color:black,stroke-dasharray: 5 5
 ```
 
-## Test-Time Scaling with PRMs
+## Value Add of PRMs
 
 - PRM provides **real-time feedback** during inference
 - Guides the policy model to generate **high-quality reasoning traces**
