@@ -275,12 +275,13 @@ The agent correctly identified the street sign and architectural features. The c
 Judgment: Yes, the reasoning trace is valid.
 </final_judgement>
 </verify>
+```
 
 ---
 layout: default
 ---
 
-# Inference with PRM: Guided Reasoning
+# RL to Improve Policy Model, and Using PRM at Test-Time
 
 ```mermaid
 graph LR
