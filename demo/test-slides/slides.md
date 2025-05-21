@@ -50,6 +50,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 layout: default
+class: text-sm
 ---
 
 # Outline
@@ -57,19 +58,23 @@ layout: default
 1.  **Introduction: The Challenge of VLM Reasoning**
     - What are VLMs?
     - Why is verifying their reasoning hard?
-2.  **Our Approach: Process Reward Models (PRM)**
+2.  **Background: The Rise of Multimodal Reasoning**
+    - Industry Emergence
+    - Enterprise Applications
+    - Our Research Focus
+3.  **Our Approach: Process Reward Models (PRM)**
     - What is a PRM?
     - Agentic Verification
-3.  **Core Mechanism 1: Monte Carlo Rollouts for "Soft Estimation"**
+4.  **Core Mechanism 1: Monte Carlo Rollouts for "Soft Estimation"**
     - *Image: Monte Carlo Rollout Sampling* (Placeholder)
     - Explanation of the process
-4.  **Core Mechanism 2: Generating Rewards for Perception**
+5.  **Core Mechanism 2: Generating Rewards for Perception**
     - *Image: Perception Reward Generation* (Placeholder)
     - How human feedback (or other oracles) train the Vision PRM
-5.  **RLHF for Fine-tuning the VLM**
+6.  **RLHF for Fine-tuning the VLM**
     - Closing the loop: Using the PRM for RLHF
-6.  **Expected Impact & Future Work**
-7.  **Q&A**
+7.  **Expected Impact & Future Work**
+8.  **Q&A**
 
 ---
 layout: default
@@ -98,11 +103,58 @@ We need a more scalable and reliable way to ensure VLMs are reasoning correctly,
 layout: default
 ---
 
+# Background: The Rise of Multimodal Reasoning
+
+## Industry Emergence
+
+- **Multimodal reasoning** powers cutting-edge products like:
+  - OpenAI Operator
+  - Manus
+  - ChatGPT's o3 agentic capabilities
+- These systems can zoom into images, search the web, and use code interpreters to answer complex multimodal queries
+- Represents a significant leap beyond unimodal AI systems
+
+---
+layout: default
+---
+
+# Background: Enterprise Applications
+
+## The Shift to Agentic Document Synthesis
+
+- AI is now automating **highly skilled analyst jobs** previously done manually
+- **Example**: Geospatial image analysis in defense 
+  - Traditionally labor-intensive and expertise-dependent
+  - Now being augmented or replaced by AI systems
+- Enormous potential for productivity gains and novel insights
+- But requires robust, verifiable reasoning capabilities
+
+---
+layout: default
+---
+
+# Background: Our Research Focus
+
+## Self-Play Reinforcement Learning for Reasoning
+
+- We focus on **"self-play" reinforcement learning (RL)** techniques
+- Goal: Enhance multimodal reasoning with **minimal human annotation**
+- Our approach:
+  - Automated "semi-formal" verification methods
+  - Inspired by formal verification in mathematics and code
+  - Creates a scalable path to more robust multimodal reasoning
+
+- The key innovation: Using **Process Reward Models** to verify reasoning chains
+
+---
+layout: default
+---
+
 # 2. Our Approach: Process Reward Models (PRM)
 
 ## What is a Process Reward Model?
 
--   Instead of rewarding just the final output (outcome-based reward), a PRM evaluates the **intermediate steps** or the **reasoning process** itself.
+-   Instead of rewarding steps based only on the final output (outcome-based reward), a PRM evaluates the **intermediate steps** or the **reasoning process** itself.
 -   This provides a more granular and informative feedback signal.
 -   **Goal**: To train a model that can predict how good a particular reasoning step (or a sequence of steps) is.
 
