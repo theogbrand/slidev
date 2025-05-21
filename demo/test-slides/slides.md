@@ -23,6 +23,11 @@ mdc: true
 # open graph
 # seoMeta:
 #  ogImage: https://cover.sli.dev
+# add scripts for Twitter widget
+headersFrontmatter:
+  scripts:
+    - src: https://platform.twitter.com/widgets.js
+      async: true
 ---
 
 # Multimodal Reasoning & RLHF
@@ -75,6 +80,20 @@ layout: default
   - ChatGPT's o3 agentic capabilities
 - These systems can zoom into images, search the web, and use code interpreters to answer complex multimodal queries
 - Represents a significant leap beyond unimodal AI systems
+
+---
+layout: center
+---
+
+<Tweet id="1912954344724406475" user="minchoi" />
+
+<!-- Add to frontmatter if not already present -->
+<!-- 
+headersFrontmatter:
+  scripts:
+    - src: https://platform.twitter.com/widgets.js
+      async: true
+-->
 
 ---
 layout: default
