@@ -109,12 +109,11 @@ layout: default
 
 ## The Shift to Agentic Document Synthesis
 
-- AI is now automating **highly skilled analyst jobs** previously done manually
+- Companies are trying to automate **highly skilled jobs** that require visual human judgement
 - **Example**: Geospatial image analysis in defense 
   - Traditionally labor-intensive and expertise-dependent
-  - Now being augmented or replaced by AI systems
-- Enormous potential for productivity gains and novel insights
-- But requires robust, verifiable reasoning capabilities
+- Agentic reasoning systems enable workflow automation involving visual judgement
+- Requires robust, verifiable reasoning capabilities
 
 ---
 layout: default
