@@ -49,49 +49,19 @@ class: text-sm
 
 # Outline
 
-1.  **Introduction: The Challenge of VLM Reasoning**
-    - What are VLMs?
-    - Why is verifying their reasoning hard?
-2.  **Background: The Rise of Multimodal Reasoning**
+1.  **Background: The Rise of Multimodal Reasoning**
     - Industry Emergence
     - Enterprise Applications
     - Our Research Focus
-3.  **Our Approach: Process Reward Models (PRM)**
+2.  **The Age of Experience: Self-Improving Agents with RL and PRMs**
     - What is a PRM?
     - Agentic Verification
-4.  **Core Mechanism 1: Monte Carlo Rollouts for "Soft Estimation"**
-    - *Image: Monte Carlo Rollout Sampling* (Placeholder)
+3.  **Core Mechanism 1: Monte Carlo Rollouts**
     - Explanation of the process
-5.  **Core Mechanism 2: Generating Rewards for Perception**
-    - *Image: Perception Reward Generation* (Placeholder)
+4.  **Core Mechanism 2: Generating Rewards for Reasoning Trace**
     - How human feedback (or other oracles) train the Vision PRM
-6.  **RLHF for Fine-tuning the VLM**
+5.  **RLHF for Fine-tuning the VLM**
     - Closing the loop: Using the PRM for RLHF
-7.  **Expected Impact & Future Work**
-8.  **Q&A**
-
----
-layout: default
----
-
-# 1. Introduction: The Challenge of VLM Reasoning
-
-## What are Vision Language Models (VLMs)?
-
--   Models that understand and generate information across both visual and textual modalities.
--   Examples: Image captioning, Visual Question Answering (VQA), multimodal dialogue.
--   Show great promise, but...
-
-## Why is verifying their reasoning hard?
-
--   **Black Box Nature**: Internal decision-making processes are often opaque.
--   **Multimodal Complexity**: Reasoning can span and integrate information from images and text in intricate ways.
-    -   *Is the model "seeing" the right thing?*
-    -   *Is it "understanding" the question correctly in context of the image?*
--   **Subjectivity & Ambiguity**: Correctness can be nuanced, especially for complex scenes or abstract questions.
--   **Scalability of Human Evaluation**: Exhaustively verifying every step of a VLM's reasoning chain is time-consuming and expensive.
-
-We need a more scalable and reliable way to ensure VLMs are reasoning correctly, not just getting the right final answer (potentially for the wrong reasons).
 
 ---
 layout: default
