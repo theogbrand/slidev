@@ -123,12 +123,6 @@ This location is the intersection of 8th Avenue and West 58th Street in Midtown 
 ```
 
 ---
-layout: center
----
-
-<iframe width="760" height="515" src="https://www.youtube.com/embed/dHc6tDcE8wk?start=45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
----
 layout: default
 ---
 
@@ -143,6 +137,12 @@ layout: default
 - Requires robust, verifiable reasoning capabilities
 
 ---
+layout: center
+---
+
+<iframe width="760" height="515" src="https://www.youtube.com/embed/dHc6tDcE8wk?start=45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
 layout: default
 ---
 
@@ -154,10 +154,9 @@ layout: default
 - Goal: Enhance multimodal reasoning with **minimal human annotation**
 - Our approach:
   - Automated "semi-formal" verification methods
-  - Inspired by formal verification in mathematics and code
-  - Creates a scalable path to more robust multimodal reasoning
+  - Creates a scalable path to improve multimodal reasoning
 
-- The key innovation: Using **Process Reward Models** to verify reasoning chains
+- The key innovation: Using **Generative Agents** to verify reasoning chains
 
 ---
 layout: default
