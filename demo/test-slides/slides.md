@@ -44,24 +44,22 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 layout: default
-class: text-sm
 ---
 
 # Outline
 
 1.  **Background: The Rise of Multimodal Reasoning**
-    - Industry Emergence
+    - Frontier AI products (Operator, Manus)
     - Enterprise Applications
-    - Our Research Focus
 2.  **The Age of Experience: Self-Improving Agents with RL and PRMs**
-    - What is a PRM?
+    - Improving agents with experience without human annotation
     - Agentic Verification
 3.  **Core Mechanism 1: Monte Carlo Rollouts**
-    - Explanation of the process
+    - Generating experiences
 4.  **Core Mechanism 2: Generating Rewards for Reasoning Trace**
-    - How human feedback (or other oracles) train the Vision PRM
-5.  **RLHF for Fine-tuning the VLM**
-    - Closing the loop: Using the PRM for RLHF
+    - Verifying reasoning traces using specialized agents with tools
+5.  **RLHF with PRM**
+    - Using the newly trained PRM to guide model inference
 
 ---
 layout: default
