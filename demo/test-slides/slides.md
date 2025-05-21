@@ -30,9 +30,9 @@ headersFrontmatter:
       async: true
 ---
 
-# Multimodal Reasoning & RLHF
+# Multimodal Reasoning & RL
 
-### Training a Process Reward Model for VLM Reasoning Verification
+### "Age of Experience", Test-time Scaling, Self-Improving Agents with RL, PRMs
 
 <div class="abs-br m-6 text-xl">
   <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
@@ -94,6 +94,12 @@ headersFrontmatter:
     - src: https://platform.twitter.com/widgets.js
       async: true
 -->
+
+---
+layout: center
+---
+
+<iframe width="760" height="515" src="https://www.youtube.com/embed/dHc6tDcE8wk?start=45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 layout: default
