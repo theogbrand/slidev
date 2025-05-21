@@ -178,6 +178,41 @@ graph TD
 
 ---
 layout: default
+class: text-small
+---
+
+```
+<Question>
+Where is this location in the image?
+[Image: Street view of a city intersection]
+</Question>
+
+<crop_tool>
+I'll analyze specific parts of this image to identify the location.
+[Crop: Street sign visible in upper right]
+</crop_tool>
+
+<reasoning>
+I can see "8th Ave" on the green street sign. There appears to be text about a "safety walkway." I should also examine other identifying features. The building architecture might provide additional clues.
+[Crop: Building with distinctive vertical panels]
+The building appears to have a modern design with vertical panels. This could be "220 West 58th" based on the architectural style.
+</reasoning>
+
+<web_search_tool>
+Searching: "8th Ave intersection near West 58th Street New York"
+</web_search_tool>
+
+<reasoning>
+The search results confirm this is likely in Manhattan, New York City. The intersection of 8th Avenue and West 58th Street is in Midtown, near Columbus Circle. The architectural style of the building matches buildings in this area. I can now provide a specific answer with high confidence.
+</reasoning>
+
+<final_answer>
+This location is the intersection of 8th Avenue and West 58th Street in Midtown Manhattan, New York City (coordinates approximately 40.7664° N, 73.9815° W). The image shows the northwest corner of this intersection, looking north up 8th Avenue.
+</final_answer>
+```
+
+---
+layout: default
 ---
 
 # Core Mechanism 2: Train a Process Reward Model with Agentic Verification of Reasoning Traces
@@ -204,6 +239,42 @@ graph LR
     style TrainData fill:white,stroke:#333, color:black
     style Tools fill:white,stroke:#333,color:black
 ```
+
+---
+layout: default
+class: text-small
+---
+
+### Agentic Verification Example
+
+```
+<reasoning_trace>
+I'll analyze specific parts of this image to identify the location.
+[Crop: Street sign visible in upper right]
+</reasoning_trace>
+
+<verify>
+I need to verify if this reasoning trace is valid. I'll use image analysis and web search tools to check the claims.
+
+<image_analysis_tool>
+Analyzing the cropped regions:
+- Confirmed: Green street sign shows "8th Ave"
+- Confirmed: Building has distinctive vertical panels
+</image_analysis_tool>
+
+<web_search_tool>
+Search: "8th Avenue West 58th Street Manhattan building with vertical panels"
+Results: Found images of this intersection matching the building description. The northwest corner has a modern building with vertical panels.
+</web_search_tool>
+
+<reasoning_verification>
+The agent correctly identified the street sign and architectural features. The claim about "220 West 58th" is partially accurate - there is a building at that intersection, though the exact address should be verified. The final conclusion about the intersection location is supported by the evidence.
+</reasoning_verification>
+
+<final_judgement>
+Judgment: Yes, the reasoning trace is valid.
+</final_judgement>
+</verify>
 
 ---
 layout: default
@@ -252,39 +323,3 @@ graph LR
 - Enables **test-time scaling** without additional training
 - Results in more **reliable and interpretable** multimodal reasoning
 - **RL training loop** uses PRM rewards to continuously improve policy model
-
----
-layout: default
-class: text-small
----
-
-# Agentic Verification Example
-
-```
-<reasoning_trace>
-I'll analyze specific parts of this image to identify the location.
-[Crop: Street sign visible in upper right]
-</reasoning_trace>
-
-<verify>
-I need to verify if this reasoning trace is valid. I'll use image analysis and web search tools to check the claims.
-
-<image_analysis_tool>
-Analyzing the cropped regions:
-- Confirmed: Green street sign shows "8th Ave"
-- Confirmed: Building has distinctive vertical panels
-</image_analysis_tool>
-
-<web_search_tool>
-Search: "8th Avenue West 58th Street Manhattan building with vertical panels"
-Results: Found images of this intersection matching the building description. The northwest corner has a modern building with vertical panels.
-</web_search_tool>
-
-<reasoning_verification>
-The agent correctly identified the street sign and architectural features. The claim about "220 West 58th" is partially accurate - there is a building at that intersection, though the exact address should be verified. The final conclusion about the intersection location is supported by the evidence.
-</reasoning_verification>
-
-<final_judgement>
-Judgment: Yes, the reasoning trace is valid. The agent properly used visual evidence to identify key features and correctly determined the location as the intersection of 8th Avenue and West 58th Street in Midtown Manhattan.
-</final_judgement>
-</verify>
