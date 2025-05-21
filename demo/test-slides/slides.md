@@ -162,81 +162,25 @@ layout: default
 layout: default
 ---
 
-# 2. Our Approach: Process Reward Models (PRM)
-
-## What is a Process Reward Model?
-
--   Instead of rewarding steps based only on the final output (outcome-based reward), a PRM evaluates the **intermediate steps** or the **reasoning process** itself.
--   This provides a more granular and informative feedback signal.
--   **Goal**: To train a model that can predict how good a particular reasoning step (or a sequence of steps) is.
-
-## Agentic Verification
-
--   We propose an **agentic approach** to build and utilize this PRM.
--   The "agent" (which could be the VLM itself, or a dedicated verification model) generates reasoning steps.
--   The PRM (or human annotators initially, to train the PRM) provides feedback on these steps.
--   This allows for iterative refinement and learning of valid reasoning pathways.
-
-**Focus**: Training a **Vision Process Reward Model (V-PRM)** specifically for the perception and reasoning components of a VLM.
-
----
-layout: default
----
-
-# 3. Core Mechanism 1: Monte Carlo Rollouts for "Soft Estimation"
+# Core Mechanism 1: Monte Carlo Rollouts
 
 ```mermaid
 graph TD
-    A[Initial Reasoning State e.g., VLM Query + Image]
-    A --> B1{Potential Step 1}
-    A --> B2{Potential Step 2}
-    A --> B3{Potential Step ...n}
-
-    B2 --> C1[Rollout 1.1]
-    B2 --> C2[Rollout 1.2]
-    B2 --> C3[Rollout 1.3]
-
-    C1 -- Evaluation --> S1[Score for Rollout 1.1]
-    C2 -- Evaluation --> S2[Score for Rollout 1.2]
-    C3 -- Evaluation --> S3[Score for Rollout 1.3]
-
-    subgraph "Soft Estimation for Potential Step 2"
-        S1 --> SE2{Aggregate Scores}
-        S2 --> SE2
-        S3 --> SE2
-        SE2 --> FinalScore2[Soft Score for Step 2]
-    end
-
-    B1 --> SB1[Soft Score for Step 1 ...]
-    B3 --> SB3[Soft Score for Step ...n]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B1 fill:#bbf,stroke:#333,stroke-width:2px
-    style B2 fill:#bbf,stroke:#333,stroke-width:2px
-    style B3 fill:#bbf,stroke:#333,stroke-width:2px
-    style C1 fill:#lightgreen,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
-    style C2 fill:#lightgreen,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
-    style C3 fill:#lightgreen,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5
-    style SE2 fill:#orange,stroke:#333,stroke-width:2px
+    A[VLM Query + Image] --> P[Perception]
+    P --> R[Reasoning]
+    R --> F[Final Output]
+    
+    style A fill:#6272a4,stroke:#333,stroke-width:2px,color:black
+    style P fill:#8be9fd,stroke:#333,stroke-width:2px,color:black
+    style R fill:#50fa7b,stroke:#333,stroke-width:2px,color:black
+    style F fill:#ffb86c,stroke:#333,stroke-width:2px,color:black
 ```
-**Figure 1: Illustrative Monte Carlo Rollout Sampling for Soft Estimation**
-
-## Explanation:
-
--   **Challenge**: Directly evaluating every possible reasoning path is intractable.
--   **Monte Carlo Tree Search (MCTS)-inspired approach**: We use rollouts (simulations) to estimate the "value" or "correctness" of intermediate reasoning states.
--   **"Soft Estimation"**:
-    -   The VLM generates potential next steps or substeps in its reasoning.
-    -   For each step, multiple "rollouts" (continuations) are sampled.
-    -   These rollouts are evaluated (e.g., by a simpler model, heuristics, or eventually the PRM itself) to get an estimated future reward.
-    -   This provides a "soft" score for each intermediate step, guiding the VLM towards more promising reasoning paths.
--   This mechanism helps in exploring the reasoning space and identifying high-quality intermediate steps without exhaustive search.
 
 ---
 layout: default
 ---
 
-# 4. Core Mechanism 2: Generating Rewards for Perception
+# Core Mechanism 2: Use Generative Agent to Generate Rewards for Perception and Reasoning Trace
 
 ```mermaid
 graph TD
@@ -312,52 +256,3 @@ layout: default
     ```
     VLM: [Step 1] -> [Step 2] -> ... -> [Final Answer]
     ```
-
-2.  **V-PRM Scores the Process**: Our trained Vision Process Reward Model (V-PRM) evaluates each step (or the entire chain), focusing on the validity of the visual processing.
-    ```
-    V-PRM: Score([Step 1]), Score([Step 2]), ...
-    ```
-
-3.  **Reinforcement Learning from Human Feedback (RLHF)**:
-    -   The scores from the V-PRM act as the reward signal.
-    -   This reward signal is used to fine-tune the original VLM using reinforcement learning algorithms (e.g., PPO).
-    -   The VLM learns to produce reasoning chains that receive higher scores from the V-PRM, thereby improving the correctness and verifiability of its reasoning.
-
-**Benefit**: Moves beyond simple answer accuracy to ensure the *way* the VLM arrives at the answer is sound, particularly its visual understanding.
-
----
-layout: default
----
-
-# 6. Expected Impact & Future Work
-
-## Expected Impact:
-
--   **More Trustworthy VLMs**: By focusing on the reasoning process, we can build VLMs that are not just accurate but also demonstrably reason correctly.
--   **Improved Debuggability**: If a VLM fails, the PRM can help pinpoint *where* in the reasoning process the error occurred.
--   **Better Sample Efficiency for RLHF**: Process-based rewards can be more informative than sparse outcome-based rewards, potentially leading to faster learning.
--   **Scalable Oversight**: A well-trained PRM can automate much of the verification process, reducing reliance on expensive human annotation.
-
-## Future Work:
-
--   Extending PRMs to more complex, multi-step reasoning tasks.
--   Investigating different agentic architectures for verification.
--   Combining process rewards with outcome rewards for a more holistic signal.
--   Developing methods for the PRM to provide *explanatory* feedback, not just scores.
--   Exploring the V-PRM's capability to generalize to new tasks and domains.
-
----
-layout: center
-class: "text-xl"
----
-
-# Questions?
-
-Feel free to ask anything!
-
-You can find the project/code (if applicable) at:
-`[Link to your repo/project page]`
-
-Contact: `[Your Name/Email]`
-
-Thank you!
